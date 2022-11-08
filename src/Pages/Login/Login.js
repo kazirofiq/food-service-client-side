@@ -1,11 +1,60 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import img from '../../assets/login/login.jpg'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+
     const handleLogin = event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            toast.success('Login Success!')
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            // setError('');
+            // navigate(from, {replace: true})
+             // if(user.emailVerified){
+    //         //     // navigate(from, { replace: true });
+    //         // }
+    //         // else{
+    //             // toast.error('Your email is not verified. Please Verify')
+    //         // }
+        })
+    // const handleSubmit = event =>{
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     const email = form.email.value;
+    //     const password = form.password.value;
+    //     signIn(email, password)
+    //     .then(result => {
+    //         toast.success('Login Success!')
+    //         const user = result.user;
+    //         console.log(user);
+    //         form.reset();
+    //         setError('');
+    //         navigate(from, {replace: true})
+    //         // if(user.emailVerified){
+    //         //     // navigate(from, { replace: true });
+    //         // }
+    //         // else{
+    //             // toast.error('Your email is not verified. Please Verify')
+    //         // }
+    //     })
+        .catch(error => {
+            console.error(error)
+            // setError(error.message)
+        })
+    //     .finally(() =>{
+    //         setLoading(false);
+    //     })
     }
     return (
         <div>
