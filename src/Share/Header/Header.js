@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         
-    <div className='relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-900 mb-3'>
+    <div className=" flex flex-wrap items-center justify-between px-2 py-3 bg-slate-900 mb-3 sticky top-0 z-30">
 
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 ">
     <div className="navbar-start">
     <div className="dropdown lg:hidden">
     <label tabindex="0" className="btn btn-ghost btn-circle">
