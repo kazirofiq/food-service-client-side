@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import img from '../../assets/login/login.jpg'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, providerLogin} = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const googleProvider = new GoogleAuthProvider();
 
     const handleSignUp = event =>{
         event.preventDefault();
@@ -16,8 +21,23 @@ const SignUp = () => {
         .then(result =>{
             const user = result.user;
             console.log(user)
+            setError('');
         })
-        .catch(err => console.error(err));
+        .catch(error => {
+            console.error(error)
+            setError(error.message)
+        })
+    }
+
+    const handleGoogleSign = () =>{
+        providerLogin(googleProvider)
+        .then(result => {
+            toast.success('Login Success!')
+            const user = result.user;
+            console.log(user);
+            // navigate(from, { replace: true });
+        })
+        .catch(error => console.error(error))
     }
     return (
         <div>
@@ -52,6 +72,17 @@ const SignUp = () => {
                 <input className="btn btn-primary" type="submit" value="Sign Up" />
             </div>
             </form>
+            <div>
+                            <p className='text-red-600 text-center'>{error}</p>
+                        </div>
+                <div className='m-2'>
+                    <p className='text-center'>..........Login with social media..............</p>
+
+                    <div className='flex gap-10 justify-center m-4'>
+                        <FaGoogle onClick={handleGoogleSign} className='text-xl'></FaGoogle>
+                        <FaGithub  className='text-xl'></FaGithub>
+                    </div>
+                </div>
             <p className='text-center'>Already have an account please <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
             </div>
             </div>

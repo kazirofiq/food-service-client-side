@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 import img from '../../assets/login/login.jpg'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn, providerLogin} = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const googleProvider = new GoogleAuthProvider();
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -19,7 +22,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             form.reset();
-            // setError('');
+            setError('');
             // navigate(from, {replace: true})
              // if(user.emailVerified){
     //         //     // navigate(from, { replace: true });
@@ -50,11 +53,22 @@ const Login = () => {
     //     })
         .catch(error => {
             console.error(error)
-            // setError(error.message)
+            setError(error.message)
         })
     //     .finally(() =>{
     //         setLoading(false);
     //     })
+    }
+
+    const handleGoogleSign = () =>{
+        providerLogin(googleProvider)
+        .then(result => {
+            toast.success('Login Success!')
+            const user = result.user;
+            console.log(user);
+            // navigate(from, { replace: true });
+        })
+        .catch(error => console.error(error))
     }
     return (
         <div>
@@ -85,6 +99,17 @@ const Login = () => {
                 <input className="btn btn-primary" type="submit" value="Login" />
             </div>
             </form>
+            <div>
+                <p className='text-red-600 text-center'>{error}</p>
+            </div>
+            <div className='m-2'>
+                    <p className='text-center'>..........Login with social media..............</p>
+
+                    <div className='flex gap-10 justify-center m-4'>
+                        <FaGoogle onClick={handleGoogleSign} className='text-xl'></FaGoogle>
+                        <FaGithub  className='text-xl'></FaGithub>
+                    </div>
+                </div>
             <p className='text-center'>New to Please <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
             </div>
             </div>
