@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({service}) => {
-    const {img, price, title,description} = service;
+    const {_id, img, price, title,description} = service;
     return (
         <div>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -17,7 +17,9 @@ const ServiceCard = ({service}) => {
                 <p>{description}</p>
             }
             <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <Link to={`/checkout/${_id}`}>
+                <button className="btn btn-primary">Buy Now</button>
+            </Link>
             </div>
             </div>
             </div>
