@@ -5,8 +5,10 @@ import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 import img from '../../assets/login/login.jpg'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+    useTitle('Login');
     const {signIn, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
     const googleProvider = new GoogleAuthProvider();

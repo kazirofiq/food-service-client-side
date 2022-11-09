@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import img from '../../assets/login/login.jpg'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+    useTitle('Sign up');
     const {createUser, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
     const googleProvider = new GoogleAuthProvider();

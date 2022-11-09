@@ -16,12 +16,9 @@ const Header = () => {
     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
     <li> <Link to="/home">Home</Link></li>
-    <li> <Link to="/faq">Faq</Link></li>
-
-    <li><Link to="/course">Courses</Link></li>
     <li><Link to="/blog">Blog</Link></li>
     <li><Link to="/login">Login</Link></li>
-    <li><Link to="/register">Register</Link></li>
+    <li><Link to="/signup">Register</Link></li>
     
 
     </ul>
@@ -44,14 +41,7 @@ const Header = () => {
                 <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Home</span>
                 </Link>
             </li>
-            <li className="nav-item hidden lg:block">
-                <Link to="courses"
-                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white  hover:opacity-75"
-                
-                >
-                <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Courses</span>
-                </Link>
-            </li>
+            
             <li className="nav-item hidden lg:block">
                 <Link to="/blog"
                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 "
@@ -62,12 +52,21 @@ const Header = () => {
                 </Link>
             </li>
             <li className="nav-item hidden lg:block">
-                <Link to="/faq"
+                <Link to="/login"
                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 "
                 
                 
                 >
-                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">FAQ</span>
+                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
+                </Link>
+            </li>
+            <li className="nav-item hidden lg:block">
+                <Link to="/signup"
+                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 "
+                
+                
+                >
+                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Sign Up</span>
                 </Link>
             </li>
         </ul>
