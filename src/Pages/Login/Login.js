@@ -9,7 +9,7 @@ import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     useTitle('Login');
-    const {signIn, providerLogin} = useContext(AuthContext);
+    const {signIn, providerLogin, setLoading} = useContext(AuthContext);
     const [error, setError] = useState('');
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
@@ -36,33 +36,14 @@ const Login = () => {
     //             // toast.error('Your email is not verified. Please Verify')
     //         // }
         })
-    // const handleSubmit = event =>{
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     signIn(email, password)
-    //     .then(result => {
-    //         toast.success('Login Success!')
-    //         const user = result.user;
-    //         console.log(user);
-    //         form.reset();
-    //         setError('');
-    //         navigate(from, {replace: true})
-    //         // if(user.emailVerified){
-    //         //     // navigate(from, { replace: true });
-    //         // }
-    //         // else{
-    //             // toast.error('Your email is not verified. Please Verify')
-    //         // }
-    //     })
+    
         .catch(error => {
             console.error(error)
             setError(error.message)
         })
-    //     .finally(() =>{
-    //         setLoading(false);
-    //     })
+        .finally(() =>{
+            setLoading(false);
+        })
     }
 
     const handleGoogleSign = () =>{
