@@ -72,7 +72,7 @@ const Header = () => {
                     user?.uid ?
                     <>
                     <span className='whitespace-nowrap'><Link to='/addservice'>Add Service</Link></span>
-                    <span className='whitespace-nowrap'><Link to='/myreview'>My Review</Link></span>
+                    <span className='whitespace-nowrap'><Link to='/orders'>My Review</Link></span>
                     <p className='whitespace-nowrap'  onClick={handleLogOut}>Log out</p>
                     </>
                     :

@@ -5,6 +5,7 @@ import Checkout from "../Pages/Checkout/Checkout";
 import Home from "../Pages/Home/Home/Home";
 import AllService from "../Pages/Home/Services/AllService/AllService";
 import Login from "../Pages/Login/Login";
+import OrderReview from "../Pages/Orders/OrderReview";
 import Orders from "../Pages/Orders/Orders";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -54,6 +55,11 @@ export const router = createBrowserRouter([
         {
             path:'/service',
             element: <AllService></AllService>
+            
+        },
+        {
+            path:'/orders',
+            element: <OrderReview></OrderReview>
             
         },
       ]
