@@ -21,20 +21,34 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
         signIn(email, password)
         .then(result => {
-            toast.success('Login Success!')
             const user = result.user;
-            console.log(user);
-            form.reset();
-            setError('');
-            navigate(from, {replace: true})
-             // if(user.emailVerified){
-    //         //     // navigate(from, { replace: true });
-    //         // }
-    //         // else{
-    //             // toast.error('Your email is not verified. Please Verify')
-    //         // }
+
+
+            const currentUser = {
+                email: user.email
+            }
+
+            console.log(currentUser);
+
+            // get jwt token
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // local storage is the easiest but not the best place to store jwt token
+                    localStorage.setItem('genius-token', data.token);
+                    navigate(from, { replace: true });
+                });
+            
         })
     
         .catch(error => {
@@ -50,10 +64,31 @@ const Login = () => {
         
         providerLogin(googleProvider)
         .then(result => {
-            toast.success('Login Success!')
             const user = result.user;
-            console.log(user);
-            navigate(from, { replace: true });
+
+
+            const currentUser = {
+                email: user.email
+            }
+
+            console.log(currentUser);
+
+            // get jwt token
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // local storage is the easiest but not the best place to store jwt token
+                    localStorage.setItem('genius-token', data.token);
+                    navigate(from, { replace: true });
+                });
+            
         })
         .catch(error => console.error(error))
     }
