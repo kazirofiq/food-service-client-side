@@ -47,12 +47,13 @@ const Login = () => {
     }
 
     const handleGoogleSign = () =>{
+        
         providerLogin(googleProvider)
         .then(result => {
             toast.success('Login Success!')
             const user = result.user;
             console.log(user);
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
     }
@@ -65,7 +66,7 @@ const Login = () => {
             </div>
             <div className="card py-20 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h1 className="text-5xl font-bold text-center">Login</h1>
-            <form onSubmit={handleLogin} className="card-body">
+            <form  onSubmit={handleLogin} className="card-body">
             <div className="form-control">
             <label className="label">
             <span className="label-text">Email</span>
@@ -92,7 +93,7 @@ const Login = () => {
                     <p className='text-center'>..........Login with social media..............</p>
 
                     <div className='flex gap-10 justify-center m-4'>
-                        <FaGoogle onClick={handleGoogleSign} className='text-xl'></FaGoogle>
+                        <FaGoogle  onClick={handleGoogleSign} className='text-xl'></FaGoogle>
                         <FaGithub  className='text-xl'></FaGithub>
                     </div>
                 </div>
