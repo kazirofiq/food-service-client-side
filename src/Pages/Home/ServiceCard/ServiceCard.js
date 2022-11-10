@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({service}) => {
+
     const {_id, img, price, title,description} = service;
     return (
         <div>
@@ -12,13 +13,13 @@ const ServiceCard = ({service}) => {
             <p className='font-bold text-red-600'>Price: ${price}</p>
             {
                 description.length > 10 ?
-                <p>{description.slice(0, 100) + '...'} <Link className='text-red-600' to="/blog">Read More...</Link></p>
+                <p>{description.slice(0, 100) + '...'} <Link className='text-red-600' to={`/checkout/${_id}`}>Read More...</Link></p>
                 :
                 <p>{description}</p>
             }
             <div className="card-actions justify-end">
             <Link to={`/checkout/${_id}`}>
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary"> View details</button>
             </Link>
             </div>
             </div>
