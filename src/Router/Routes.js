@@ -3,6 +3,7 @@ import Main from "../components/layout/Main";
 import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Home from "../Pages/Home/Home/Home";
+import AllService from "../Pages/Home/Services/AllService/AllService";
 import Login from "../Pages/Login/Login";
 import Orders from "../Pages/Orders/Orders";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
         {
             path:'/orders',
             element: <Orders></Orders>
+            
+        },
+        {
+            path:'/service',
+            element: <AllService></AllService>
             
         },
       ]

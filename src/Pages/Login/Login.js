@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 import img from '../../assets/login/login.jpg'
@@ -12,6 +12,9 @@ const Login = () => {
     const {signIn, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -25,7 +28,7 @@ const Login = () => {
             console.log(user);
             form.reset();
             setError('');
-            // navigate(from, {replace: true})
+            navigate(from, {replace: true})
              // if(user.emailVerified){
     //         //     // navigate(from, { replace: true });
     //         // }

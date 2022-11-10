@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import img from '../../assets/login/login.jpg'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -12,6 +12,10 @@ const SignUp = () => {
     const {createUser, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleSignUp = event =>{
         event.preventDefault();
@@ -37,7 +41,7 @@ const SignUp = () => {
             toast.success('Login Success!')
             const user = result.user;
             console.log(user);
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
     }

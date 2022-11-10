@@ -1,8 +1,19 @@
-import React from 'react';
-import { Button } from 'react-daisyui';
+
+
+import { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    
+    const handleLogOut = () => {
+       
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    };
     return (
         
     <div className=" flex flex-wrap items-center justify-between px-2 py-3 bg-slate-900 mb-3 sticky top-0 z-30">
@@ -51,24 +62,40 @@ const Header = () => {
                 <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Blog</span>
                 </Link>
             </li>
-            <li className="nav-item hidden lg:block">
-                <Link to="/login"
-                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 "
-                
-                
-                >
-                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
-                </Link>
-            </li>
-            <li className="nav-item hidden lg:block">
-                <Link to="/signup"
-                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 "
-                
-                
-                >
-                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Sign Up</span>
-                </Link>
-            </li>
+            
+                    <li className="  nav-item flex px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white hover:opacity-75 items-center">
+
+
+                    <i className="fab fa-pinterest  leading-lg  opacity-75 text-white lg:text-black flex gap-3 items-center">
+
+                    {
+                    user?.uid ?
+                    <>
+                    <span className='whitespace-nowrap'>{user?.displayName}</span>
+                    <p className='whitespace-nowrap'  onClick={handleLogOut}>Log out</p>
+                    </>
+                    :
+                    <>
+                    <Link className='fab fa-pinterest  leading-lg  opacity-75 text-white lg:text-black ' to='/login'>Login</Link>
+                    <Link to='/signup'>Register<i class="fas fa-upload    "></i></Link>
+                    </>
+                    }
+
+
+                    <Link to="/profile"  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white lg:text-black md:text-white  hover:opacity-75"
+
+
+                    >
+                    {user?.photoURL?
+
+                    <img className='h-8 rounded-lg' src={user?.photoURL} alt="" />
+                    : 
+                    <span><FaUser></FaUser></span>
+                    }
+                    </Link>
+                    </i>
+
+                    </li>
         </ul>
     </div>
     </div>
