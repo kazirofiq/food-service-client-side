@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import ServiceDetails from '../ServiceDetails/ServiceDetails';
+import ChechoutDetails from './ChechoutDetails';
+
 
 const Checkout = () => {
     const {_id, title, price} = useLoaderData();
@@ -45,20 +46,20 @@ const Checkout = () => {
             })
             .catch(er => console.error(er));
     }
-
+   
     
 
     return (
         <div className='p-10'>
 
-            <ServiceDetails></ServiceDetails>
+            <ChechoutDetails></ChechoutDetails>
 
             <form onSubmit={handlePlaceOrder}>
                 
                
                 <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/form-bg.png" className="max-w-sm rounded-lg shadow-2xl" />
+                <img src="https://i.ibb.co/R7XSpv4/form-bg.png" className="max-w-sm rounded-lg shadow-2xl" />
                 <div>
                 <h1 className="text-5xl font-bold">You are about to order: <span className='text-lime-600'>{title}</span>
                     </h1>

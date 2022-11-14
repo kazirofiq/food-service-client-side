@@ -1,5 +1,6 @@
 import { createBrowserRouter, Link } from "react-router-dom";
 import Main from "../components/layout/Main";
+import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Home from "../Pages/Home/Home/Home";
@@ -7,6 +8,8 @@ import AllService from "../Pages/Home/Services/AllService/AllService";
 import Login from "../Pages/Login/Login";
 import OrderReview from "../Pages/Orders/OrderReview";
 import Orders from "../Pages/Orders/Orders";
+import Reviews from "../Pages/Reviews/Reviews";
+
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -62,6 +65,13 @@ export const router = createBrowserRouter([
             element: <OrderReview></OrderReview>
             
         },
+        {
+            path:'/addservice',
+            element: <AddService></AddService>
+            
+        },
+        
+        
       ]
     },
     {

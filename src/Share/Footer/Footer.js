@@ -5,7 +5,7 @@ const Footer = () => {
     return (
 <footer className="footer p-10 bg-slate-900 text-white">
   <div>
-  <Link><img className='w-100 h-12' src="http://fitmeal.like-themes.com/wp-content/themes/fitmeal/assets/images/logo.png" alt="" /></Link>
+  <Link><img className='w-100 h-12' src="https://i.ibb.co/LSHpYD1/logo.png" alt="" /></Link>
   <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
   </div> 
   <div>

@@ -4,34 +4,21 @@ import OrderReview from './OrderReview';
 
 
 const Orders = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user} = useContext(AuthContext);
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch(`https://food-delevery-server-servoce.vercel.app/orders?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
-            }
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut();
-                }
-                return res.json();
-            })
-            .then(data => {
-                setOrders(data);
-            })
-    }, [user?.email, logOut])
+        fetch(`https://food-delevery-server-servoce.vercel.app/orders?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }, [user?.email])
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this order');
         if (proceed) {
             fetch(`https://food-delevery-server-servoce.vercel.app/orders/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('genius-token')}`
-                }
+               
             })
                 .then(res => res.json())
                 .then(data => {
@@ -49,7 +36,7 @@ const Orders = () => {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+                
             },
             body: JSON.stringify({ status: 'Approved' })
         })

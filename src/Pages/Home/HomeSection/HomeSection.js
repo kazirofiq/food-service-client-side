@@ -2,22 +2,31 @@ import React from 'react';
 
 const HomeSection = () => {
     return (
-        <div>
+        <div className=''>
             <div className="card p-10 lg:card-side bg-base-100 shadow-xl">
-            <figure><img className='lg:w-full mr-10' src="http://fitmeal.like-themes.com/wp-content/uploads/2018/02/dish_01-1.jpg" alt="Album"/></figure>
-            <div className="card-body">
-            <h2 className="card-title">Eggs with Bacon and Salad</h2>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            <p>Energy: 290 kkal</p>
-            <p>Protein: 26 g</p>
-            <p>Fat: 8 g</p>
-            <p>Carbohydrates: 49 g</p>
-            <h2>$12.49</h2>
-            <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
-            <button className="btn btn-primary">Listen</button>
+            
+            <div className='grid md:grid-cols-2'>
+                <div>
+                    <figure><img className='lg:w-full  mr-10' src="https://i.ibb.co/gg3pqW8/dish-08-1-360x360.jpg" alt="Album"/></figure>
+                </div>
+
+                <div>
+                    <div className="card-body">
+                    <h2 className="card-title">Eggs with Bacon and Salad</h2>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>Energy: 290 kkal</p>
+                    <p>Protein: 26 g</p>
+                    <p>Fat: 8 g</p>
+                    <p>Carbohydrates: 49 g</p>
+                    <h2>$12.49</h2>
+                    <div className="card-actions justify-end">
+                    <button className="btn btn-primary">Listen</button>
+                    <button className="btn btn-primary">Listen</button>
+                    </div>
+                    </div>
+                </div>
             </div>
-            </div>
+
             </div>
 
             <div className="card lg:p-10 lg:card-side bg-base-100 shadow-xl">
@@ -34,7 +43,7 @@ const HomeSection = () => {
             <button className="btn btn-primary">Listen</button>
             </div>
             </div>
-            <figure><img className='w-full ml-10' src="http://fitmeal.like-themes.com/wp-content/uploads/2018/02/dish_02-1.jpg" alt="Album"/></figure>
+            <figure><img className='w-full ml-10' src="https://i.ibb.co/KzWx7vg/dish-02-1.jpg" alt="Album"/></figure>
             </div>
         </div>
     );

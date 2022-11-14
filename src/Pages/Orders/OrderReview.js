@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const OrderReview = ({ order, handleDelete, handleStatusUpdate }) => {
-    const { _id, serviceName, phone, customer, price, service, status } = order;
+    const { _id, serviceName, phone, customer, price, service, status, description } = order;
     const [orderService, setOrderService] = useState({})
 
     useEffect(() => {

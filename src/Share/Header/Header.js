@@ -37,7 +37,7 @@ const Header = () => {
     </div>
     <div className="navbar lg:-ml-28 ">
     <Link to='/home' className="btn btn-ghost normal-case text-3xl">
-        <img className='w-100 h-10' src="http://fitmeal.like-themes.com/wp-content/themes/fitmeal/assets/images/logo.png" alt="" />
+        <img className='w-100 h-10' src="https://i.ibb.co/LSHpYD1/logo.png" alt="" />
      </Link>
     </div>
     <div className="navbar-end ">
